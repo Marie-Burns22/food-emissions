@@ -1,1 +1,12 @@
-<h1>This is the Food Model's index page.</h1>
+<!DOCTYPE html>
+<html>
+  <body>
+    <h1>Greenhouse Gas Emissions Per Serving of Food</h1>
+    <p><% @foods.each do |food| %>
+      
+        <ul>
+          <li><%= food.name %></li>
+        </ul>
+      <% end %></p>
+  </body>
+</html>

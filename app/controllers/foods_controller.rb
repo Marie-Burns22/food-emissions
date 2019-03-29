@@ -2,6 +2,7 @@ class FoodsController < ApplicationController
 
   # GET: /foods
   get "/foods" do
+    @foods = Food.all
     erb :"/foods/index.html"
   end
 
