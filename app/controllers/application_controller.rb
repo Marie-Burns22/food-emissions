@@ -26,6 +26,10 @@ class ApplicationController < Sinatra::Base
     def logout!
       session.clear
     end
+
+    def logged_in_redirect
+      redirect '/foods' if logged_in?
+    end
   end
 
 end

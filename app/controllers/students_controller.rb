@@ -8,11 +8,8 @@ class StudentsController < ApplicationController
 
   # sign up page
   get "/students/signup" do
-    if logged_in?
-      redirect "/foods"
-    else
-      erb :"/students/signup.html"
-    end
+    logged_in_redirect
+    erb :"/students/signup.html"
   end
 
   # POST: /students
@@ -29,11 +26,8 @@ class StudentsController < ApplicationController
   end
 
   get '/students/login' do
-    if logged_in?
-      redirect '/foods'    # if logged in, go to food index
-    else
-      erb :'students/login'
-    end
+    logged_in_redirect
+    erb :'students/login'
   end
 
   post '/login' do
