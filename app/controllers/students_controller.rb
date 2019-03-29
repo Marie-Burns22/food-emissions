@@ -59,4 +59,9 @@ class StudentsController < ApplicationController
   delete "/students/:id/delete" do
     redirect "/students"
   end
+
+  get '/logout' do
+    logout! if logged_in?
+    redirect "/"
+  end
 end
