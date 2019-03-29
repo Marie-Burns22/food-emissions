@@ -1,1 +1,12 @@
-<h1>This is the Model's index page.</h1>
+
+<!DOCTYPE html>
+<html>
+  <body>
+    <h1>Student Contributors</h1>
+    <p><% @students.each do |student| %>
+        <ul>
+          <li><%= student.name %></li>
+        </ul>
+      <% end %></p>
+  </body>
+</html>

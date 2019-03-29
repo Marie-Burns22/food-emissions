@@ -2,17 +2,21 @@ class StudentsController < ApplicationController
 
   # GET: /students
   get "/students" do
+    @students = Student.all
     erb :"/students/index.html"
   end
 
-  # GET: /students/new
+  # sign up page
   get "/students/signup" do
-    erb :"/students/signup.html"
+    if logged_in?
+      redirect "/foods"
+    else
+      erb :"/students/signup.html"
+    end
   end
 
   # POST: /students
   post "/students" do
-
     if Student.find_by(:email => params[:email])  #does not check for name duplicates since students could have same name
       redirect '/students/login'
     elsif !params[:email].empty? && !params[:password].empty? && !params[:name].empty?
