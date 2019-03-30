@@ -2,6 +2,7 @@
 <html>
   <body>
     <h2>Greenhouse Gas Emissions Per Serving of Food</h2>
+
     <h2>Welcome <%=current_student.name %>, student_id: <%= current_student.id %></h2>
     <% @foods.each do |food| %>
         <ul>
@@ -11,3 +12,12 @@
       <% end %>
   </body>
 </html>
+
+<% if false %>
+<% @foods.each do |food| %>
+    <ul>
+      <br>
+      <li><% student = food.student #%><%= food.name %>, emits <%= food.ghg_amount %> lbs of carbon, Source: <a href="<%=# food.source%>">, <%= food.source %></a>, id: <%= food.id %>, by student <%= food.student_id %> <%= student.name %></li>
+    </ul>
+  <% end %>
+  <% end %>

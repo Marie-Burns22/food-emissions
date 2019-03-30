@@ -5,7 +5,7 @@
     <% @students.each do |student| %>
         <ul>
           <br>
-          <li><h2><%= student.name %></h2></li>
+          <li><h2><a href="/students/<%=student.id%>"><%= student.name %></a></h2></li>
           <br>
           <% student.foods.each do |food| %>
           <ul>
