@@ -2,10 +2,17 @@
 <html>
   <body>
     <h1>Student Contributors</h1>
-    <p><% @students.each do |student| %>
+    <% @students.each do |student| %>
         <ul>
-          <li><%= student.name %></li>
+          <br>
+          <li><h2><%= student.name %></h2></li>
+          <% student.foods.each do |food| %>
+          <br>
+            <ul>
+              <li><p><%=food.name%>, <%= food.ghg_amount %> lbs of carbon, Source: <a href="<%=food.source%>"><%= food.source %></a></p></li>
+            </ul>
+          <% end %>
         </ul>
-      <% end %></p>
+    <% end %>
   </body>
 </html>
