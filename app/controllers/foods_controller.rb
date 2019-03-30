@@ -14,8 +14,16 @@ class FoodsController < ApplicationController
 
   # create food data entry
   post "/foods" do
+    if logged_in? && !params[:name].empty? && !params[:ghg_amount].empty? && !params[:source].empty?
 
-    redirect "/foods"
+      @food = Food.create(params)
+      @food.student = current_student
+      @food.save
+
+      redirect "/foods"
+    else
+      redirect "/foods/new"
+    end
   end
 
   # GET: /foods/5
