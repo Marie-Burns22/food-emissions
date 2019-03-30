@@ -1,6 +1,13 @@
-<% @student.foods.each do |food| %>
+<h2>These are the foods that <%= @student.name %> entered.</h2>
+<% @foods.each do |food| %>
 <br>
   <ul>
-    <li><p><%=food.name%>, <%= food.ghg_amount %> lbs of carbon, Source: <a href="<%=food.source%>"><%= food.source %></a></p></li>
+    <li>
+      <%=food.name%>, <%= food.ghg_amount %> lbs of carbon, Source: <a href="<%=food.source%>"><%= food.source %></a>
+      <form method="post" action="/foods/<%=food.id %>/delete">
+      <input id="hidden" type="hidden" name="_method" value="DELETE">
+      <input type="submit" value="Delete Food">
+    </form>
+    </li>
   </ul>
 <% end %>

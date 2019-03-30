@@ -55,6 +55,18 @@ class FoodsController < ApplicationController
 
   # DELETE: /foods/5/delete
   delete "/foods/:id/delete" do
-    redirect "/foods"
+    @food = Food.find_by_id(params[:id])
+    not_logged_in_redirect
+    if current_student.id == @food.student_id || @food.student_id == nil
+      @food.delete
+      redirect "/students/#{@food.student_id}"
+    else
+      redirect '/failure'
+    end
   end
+
+  get '/failure' do
+    erb :"/students/failure"
+  end
+
 end

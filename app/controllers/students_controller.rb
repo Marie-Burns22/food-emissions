@@ -44,6 +44,8 @@ class StudentsController < ApplicationController
 
   # GET: /students/5
   get "/students/:id" do
+    @student = Student.find_by_id(params[:id])
+    @foods = @student.foods
     erb :"/students/show.html"
   end
 
@@ -61,7 +63,7 @@ class StudentsController < ApplicationController
   delete "/students/:id/delete" do
     redirect "/students"
   end
-  
+
   #log out student
   get '/logout' do
     logout! if logged_in?
