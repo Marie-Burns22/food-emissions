@@ -6,13 +6,15 @@ class FoodsController < ApplicationController
     erb :"/foods/index.html"
   end
 
-  # GET: /foods/new
+  # route to new food data form
   get "/foods/new" do
+    not_logged_in_redirect
     erb :"/foods/new.html"
   end
 
-  # POST: /foods
+  # create food data entry
   post "/foods" do
+
     redirect "/foods"
   end
 

@@ -1,6 +1,6 @@
 class StudentsController < ApplicationController
 
-  # GET: /students
+  # routes to view page with all students
   get "/students" do
     @students = Student.all
     erb :"/students/index.html"
@@ -12,7 +12,7 @@ class StudentsController < ApplicationController
     erb :"/students/signup.html"
   end
 
-  # POST: /students
+  # creates students from sign up form
   post "/students" do
     if Student.find_by(:email => params[:email])  #does not check for name duplicates since students could have same name
       redirect '/students/login'
@@ -25,11 +25,13 @@ class StudentsController < ApplicationController
     end
   end
 
+  # routes to login form
   get '/students/login' do
     logged_in_redirect
     erb :'students/login'
   end
 
+  # login student with form data
   post '/login' do
     @student = Student.find_by(email: params[:email])
     if @student && @student.authenticate(params[:password])
@@ -59,7 +61,8 @@ class StudentsController < ApplicationController
   delete "/students/:id/delete" do
     redirect "/students"
   end
-
+  
+  #log out student
   get '/logout' do
     logout! if logged_in?
     redirect "/"
