@@ -41,15 +41,15 @@ class FoodsController < ApplicationController
   # PATCH: /foods/5
   patch "/foods/:id" do
     @food = Food.find_by_id(params[:id])
-    if logged_in && current_student == @food.student_id
+    if logged_in? && current_student.id == @food.student_id
 
       @food.name = params[:name]
       @food.ghg_amount = params[:ghg_amount]
       @food.source = params[:source]
       @food.save
-      redirect "/foods"
+      redirect "/students/#{@food.student_id}"
     else
-      redirect "/"
+      redirect "/failure"
     end
   end
 
