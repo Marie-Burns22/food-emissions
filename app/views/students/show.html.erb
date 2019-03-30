@@ -5,7 +5,7 @@
     <li>
       <%=food.name%>, <%= food.ghg_amount %> lbs of carbon, Source: <a href="<%=food.source%>"><%= food.source %></a>
       <br>
-      <% if @student.id == current_student.id %>
+      <% if current_student && @student.id == current_student.id %>
         <a href="/foods/<%=food.id %>/edit">Edit Food</a>
 
         <br>
