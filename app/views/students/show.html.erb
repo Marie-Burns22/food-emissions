@@ -1,1 +1,6 @@
-<h1>This is the show page for an individual instance of your model.</h1>
+<% @student.foods.each do |food| %>
+<br>
+  <ul>
+    <li><p><%=food.name%>, <%= food.ghg_amount %> lbs of carbon, Source: <a href="<%=food.source%>"><%= food.source %></a></p></li>
+  </ul>
+<% end %>

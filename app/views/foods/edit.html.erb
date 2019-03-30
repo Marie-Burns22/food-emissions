@@ -1,1 +1,29 @@
-<h1>Insert the form to edit an instance of your model here.</h1>
+<!DOCTYPE html>
+<html>
+
+  <body>
+    <h1>Edit Food</h1>
+
+    <form action="/foods/<%=@food.id%>" method="post">
+    <input id="hidden" type="hidden" name="_method" value="patch">
+
+
+    <br>
+    <label for="name">Food Name:</label>
+    <input id="name" type="text" name="name" value="<%= @food.name %>">
+
+    <br>
+    <label for="ghg_amount">Carbon emitted (lbs):</label>
+    <input type="text" name="ghg_amount" value="<%= @food.ghg_amount %>">
+
+    <br>
+    <label for="source">Source (website): </label>
+    <input type="text" name="source" value="<%= @food.source %>">
+
+    <br>
+    <input type="submit" value="Update Food">
+
+    </form>
+
+  </body>
+</html>

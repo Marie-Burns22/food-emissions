@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
   <body>
-    <h1>Greenhouse Gas Emissions Per Serving of Food</h1>
-    <p><% @foods.each do |food| %>
-      
+    <h2>Greenhouse Gas Emissions Per Serving of Food</h2>
+    <h2>Welcome <%=current_student.name %>, student_id: <%= current_student.id %></h2>
+    <% @foods.each do |food| %>
         <ul>
-          <li><%= food.name %></li>
+          <br>
+          <li><%= food.name %>, emits <%= food.ghg_amount %> lbs of carbon, Source: <a href="<%=food.source%>">, <%= food.source %></a>, id: <%= food.id %>, by student <%= food.student_id %></li>
         </ul>
-      <% end %></p>
+      <% end %>
   </body>
 </html>

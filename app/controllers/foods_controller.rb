@@ -31,14 +31,26 @@ class FoodsController < ApplicationController
     erb :"/foods/show.html"
   end
 
-  # GET: /foods/5/edit
+  # route to edit food form
   get "/foods/:id/edit" do
+    not_logged_in_redirect
+    @food = Food.find_by_id(params[:id])
     erb :"/foods/edit.html"
   end
 
   # PATCH: /foods/5
   patch "/foods/:id" do
-    redirect "/foods/:id"
+    @food = Food.find_by_id(params[:id])
+    if logged_in && current_student == @food.student_id
+
+      @food.name = params[:name]
+      @food.ghg_amount = params[:ghg_amount]
+      @food.source = params[:source]
+      @food.save
+      redirect "/foods"
+    else
+      redirect "/"
+    end
   end
 
   # DELETE: /foods/5/delete
