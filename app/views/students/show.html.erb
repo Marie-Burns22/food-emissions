@@ -5,14 +5,15 @@
     <li>
       <%=food.name%>, <%= food.ghg_amount %> lbs of carbon, Source: <a href="<%=food.source%>"><%= food.source %></a>
       <br>
-      <a href="/foods/<%=food.id %>/edit">Edit Food</a>
-      <br>
-      <form method="post" action="/foods/<%=food.id %>/delete">
-      <input id="hidden" type="hidden" name="_method" value="DELETE">
-      <input type="submit" value="Delete Food">
+      <% if @student.id == current_student.id %>
+        <a href="/foods/<%=food.id %>/edit">Edit Food</a>
 
-
-    </form>
+        <br>
+        <form method="post" action="/foods/<%=food.id %>/delete">
+          <input id="hidden" type="hidden" name="_method" value="DELETE">
+          <input type="submit" value="Delete Food">
+        </form>
+      <% end %>
     </li>
   </ul>
 <% end %>

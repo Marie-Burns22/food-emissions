@@ -14,8 +14,13 @@
     <link rel="stylesheet" href="/stylesheets/main.css" />
   </head>
   <body>
-    <h1>Welcome, <%=current_student.name %> to the Food Emissions Data Collection</h1>
-  
+    <% if current_student %>
+      <h1>Welcome, <%=current_student.name %> to the Food Emissions Data Collection</h1>
+      <% else %>
+      <h1>Welcome to the Food Emissions Data Collection!</h1>
+      <h2>Please Sign Up or Login to add more food emissions to the collection.</h2>
+    <% end %>
+
     <div class="wrapper">
 
         <%= yield %>
