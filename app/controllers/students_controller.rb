@@ -15,6 +15,7 @@ class StudentsController < ApplicationController
   # creates students from sign up form
   post "/students" do
     if Student.find_by(:email => params[:email])  #does not check for name duplicates since students could have same name
+      flash[:message] = "An account with that email exists. Please log in."
       redirect '/students/login'
     elsif !params[:email].empty? && !params[:password].empty? && !params[:name].empty?
       @student = Student.create(params)
