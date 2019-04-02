@@ -2,11 +2,14 @@
 <html>
   <body>
     <h2>Greenhouse Gas Emissions Per Serving of Food</h2>
-
+    <br>
+    <% if flash.has?(:message) %>
+        <h2><%= flash[:message] %></h2>
+    <% end %>
     <% @foods.each do |food| %>
         <ul>
           <br>
-          <li><%= food.name %>, emits <%= food.ghg_amount %> lbs of carbon, Source: <a href="<%=food.source%>">, <%= food.source %></a>, id: <%= food.id %>, by student <%= food.student_id %></li>
+          <li><%= food.name %>, emits <%= food.ghg_amount %> lbs of carbon, Source: <a href="<%=food.source%>"><%= food.source %></a>, id: <%= food.id %>, by student <%= food.student_id %></li>
         </ul>
       <% end %>
   </body>

@@ -1,4 +1,6 @@
+require 'rack-flash'
 class FoodsController < ApplicationController
+use Rack::Flash
 
   # GET: /foods
   get "/foods" do
@@ -18,9 +20,14 @@ class FoodsController < ApplicationController
 
       @food = Food.create(params)
       @food.student = current_student
-      @food.save
 
-      redirect "/foods"
+      if @food.save == true
+        flash[:message] = "You successfully added #{@food.name} to the collection!"
+        redirect "/foods"
+      else 
+        flash[:message] = "Your greenhouse gas emissions must be between 1-10"
+        redirect "/foods/new"
+      end
     else
       redirect "/foods/new"
     end

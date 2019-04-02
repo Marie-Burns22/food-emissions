@@ -4,14 +4,16 @@
     <h1>Add Food Greenhouse Gas Emissions Data</h1>
 
     <form action="/foods" method="post">
-
+      <% if flash.has?(:message) %>
+          <h2><%= flash[:message] %></h2>
+      <% end %>
       <br>
       <label for="name">Food Name:</label>
-      <input id="name" type="text" name="name">
+      <input id="name" type="text" name="name" required>
 
       <br>
-      <label for="ghg_amount">Carbon emitted (lbs):</label>
-      <input type="text" name="ghg_amount" value="">
+      <label for="ghg_amount">Carbon emitted(lbs):</label>
+      <input type="text" name="ghg_amount" value="Enter integer only" required>
 
       <br>
       <label for="source">Source (website): </label>
