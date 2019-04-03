@@ -20,7 +20,8 @@ class StudentsController < ApplicationController
     elsif !params[:email].empty? && !params[:password].empty? && !params[:name].empty?
       @student = Student.create(params)
       session[:user_id] = @student.id
-      redirect '/foods'  #when users are logged in teh first page they are directed to is the food index
+      flash[:message] = "You successfully created an account. Choose 'Add new food' to contribute to this list"
+      redirect '/foods'  #when users are logged in the first page they are directed to is the food index
     else
       redirect '/students/signup'  #sends back to the signup page if not a user and not correct information
     end

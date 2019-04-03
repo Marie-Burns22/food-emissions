@@ -55,7 +55,7 @@ use Rack::Flash
       @food.source = params[:source]
       @food.save
       if @food.save
-        flash[:message] = "Your updated #{@food.name}."
+        flash[:message] = "You updated #{@food.name}."
         redirect "/students/#{@food.student_id}"
       else
         flash[:message] = "Your greenhouse gas emissions must be between 1-10"
