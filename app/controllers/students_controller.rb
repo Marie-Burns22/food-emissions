@@ -40,7 +40,8 @@ class StudentsController < ApplicationController
       session[:user_id] = @student.id
       redirect '/foods'  #when users are logged in teh first page they are directed to is the food index
     else
-      redirect '/login'
+      flash[:message] = "Check that you email and password are entered correctly."
+      redirect '/students/login'
     end
   end
 
