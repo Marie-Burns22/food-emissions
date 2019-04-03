@@ -9,7 +9,15 @@
     <% @foods.each do |food| %>
         <ul>
           <br>
-          <li><%= food.name %>, emits <%= food.ghg_amount %> lbs of carbon, Source: <a href="<%=food.source%>"><%= food.source %></a>, id: <%= food.id %>, by student <%= food.student_id %></li>
+          <li><h3><%= food.name %></h3>
+            <br>
+            <%= food.ghg_amount %> lbs of carbon
+             <br>
+            Source: <a href="<%=food.source%>"><%= food.source %></a>
+             <br>
+            <% if food.student %>
+            Added by <a href="/students/<%=food.student.id%>"><%= food.student.name %></a>
+            <% end %> </li>
         </ul>
       <% end %>
   </body>

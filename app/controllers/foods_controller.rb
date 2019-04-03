@@ -24,7 +24,7 @@ use Rack::Flash
       if @food.save == true
         flash[:message] = "You successfully added #{@food.name} to the collection!"
         redirect "/foods"
-      else 
+      else
         flash[:message] = "Your greenhouse gas emissions must be between 1-10"
         redirect "/foods/new"
       end
@@ -54,7 +54,14 @@ use Rack::Flash
       @food.ghg_amount = params[:ghg_amount]
       @food.source = params[:source]
       @food.save
-      redirect "/students/#{@food.student_id}"
+      if @food.save
+        flash[:message] = "Your updated #{@food.name}."
+        redirect "/students/#{@food.student_id}"
+      else
+        flash[:message] = "Your greenhouse gas emissions must be between 1-10"
+        redirect "/students/#{@food.student_id}"
+      end
+
     else
       redirect "/failure"
     end

@@ -1,13 +1,20 @@
 <h2>These are the foods that <%= @student.name %> entered.</h2>
+<% if flash.has?(:message) %>
+    <h2><%= flash[:message] %></h2>
+<% end %>
 <% @foods.each do |food| %>
 <br>
   <ul>
     <li>
-      <%=food.name%>, <%= food.ghg_amount %> lbs of carbon, Source: <a href="<%=food.source%>"><%= food.source %></a>
+      <h3><%=food.name%></h3>
+      <br><%= food.ghg_amount %> lbs of carbon
+      <br> Source: <a href="<%=food.source%>"><%= food.source %></a>
+      <br>
       <br>
       <% if current_student && @student.id == current_student.id %>
         <a href="/foods/<%=food.id %>/edit">Edit Food</a>
 
+        <br>
         <br>
         <form method="post" action="/foods/<%=food.id %>/delete">
           <input id="hidden" type="hidden" name="_method" value="DELETE">
